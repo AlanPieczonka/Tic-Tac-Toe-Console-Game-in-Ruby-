@@ -6,11 +6,13 @@ class Board
 
   def initialize
     @board_player = Player.new
+    @board_game = Game.new
   end
   
   @@main_board = Hash["A1" => '#', "B1" => '#', "C1" => '#',
                     "A2" => '#', "B2" => '#', "C2" => '#',
                     "A3" => '#', "B3" => '#', "C3" => '#']
+  
   WIN_KEYS = [
                 ["A1", "A2", "A3"],
                 ["B1", "B2", "B3"],
@@ -30,7 +32,7 @@ class Board
             display_winner("X") 
           elsif @@main_board[x] === 'O' && @@main_board[y] === 'O' && @@main_board[z] === 'O'
             someone_won = true  
-            display_winnner("O") 
+            display_winner("O") 
           end
         end
         return someone_won #or simply someone_won
@@ -56,9 +58,14 @@ class Board
   end
   
   def reset_board
-        @@main_board = Hash["A1" => '#', "B1" => '#', "C1" => '#',
-                    "A2" => '#', "B2" => '#', "C2" => '#',
-                    "A3" => '#', "B3" => '#', "C3" => '#']
+        #@@main_board = Hash["A1" => '#', "B1" => '#', "C1" => '#',
+         #           "A2" => '#', "B2" => '#', "C2" => '#',
+         #           "A3" => '#', "B3" => '#', "C3" => '#']
+
+        @@main_board.each do |key, value|
+          value = '#'
+        end
+        draw_board
   end
   
   def to_change (key, value)
@@ -78,7 +85,7 @@ class Board
   private
   def change_board(key, value)
     @@main_board[key] = value;
-    $steps += 1
+    @board_game.increment_steps()
   end
   
 end
