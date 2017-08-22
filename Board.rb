@@ -58,14 +58,9 @@ class Board
   end
   
   def reset_board
-        #@@main_board = Hash["A1" => '#', "B1" => '#', "C1" => '#',
-         #           "A2" => '#', "B2" => '#', "C2" => '#',
-         #           "A3" => '#', "B3" => '#', "C3" => '#']
-
-        @@main_board.each do |key, value|
-          value = '#'
+        @@main_board.each_key do |key|
+          @@main_board[key] = '#'
         end
-        draw_board
   end
   
   def to_change (key, value)
