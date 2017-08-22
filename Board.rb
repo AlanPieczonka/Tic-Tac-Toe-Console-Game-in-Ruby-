@@ -11,7 +11,7 @@ class Board
   @@main_board = Hash["A1" => '#', "B1" => '#', "C1" => '#',
                     "A2" => '#', "B2" => '#', "C2" => '#',
                     "A3" => '#', "B3" => '#', "C3" => '#']
-  @@win_keys = [
+  WIN_KEYS = [
                 ["A1", "A2", "A3"],
                 ["B1", "B2", "B3"],
                 ["C1", "C2", "C3"],
@@ -24,7 +24,7 @@ class Board
   
   def check_win
         someone_won = false
-        @@win_keys.each do |x,y,z|
+        WIN_KEYS.each do |x,y,z|
           if @@main_board[x] === 'X' && @@main_board[y] === 'X' && @@main_board[z] === 'X'
             someone_won = true 
             display_winner("X") 
@@ -33,7 +33,7 @@ class Board
             display_winnner("O") 
           end
         end
-        someone_won
+        return someone_won #or simply someone_won
   end
   
   def display_winner(winner)
