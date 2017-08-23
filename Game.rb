@@ -16,9 +16,9 @@ class Game
       mainBoard = Board.new()
       mainPlayer = Player.new()
       until @there_is_a_winner || @@steps == 9
-        mainBoard.draw_board
-        mainBoard.to_change(mainPlayer.get_field, $currentPlayer)
-        if mainBoard.check_win
+        mainBoard.draw_board()
+        mainBoard.to_change(mainPlayer.get_field, mainPlayer.currentPlayer())
+        if mainBoard.check_win()
           @there_is_a_winner = true
         end
       end

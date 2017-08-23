@@ -67,7 +67,7 @@ class Board
     board_keys = @@main_board.keys
     if board_keys.include?(key) && @@main_board[key] == '#'
       change_board(key, value)
-      @board_player.switch_player
+      @board_player.switch_player()
     else
       puts " "
       puts "It doesn't include this key or field is filled!"
